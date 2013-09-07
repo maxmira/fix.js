@@ -9,7 +9,7 @@ var _ = require('underscore');
 var sendercompid = "DATA_FIX_TMT";
 var targetcompid = "HSFX-FIX-BRIDGE";
 var port = 9021;
-var host = "209.191.250.26";
+var host = "ip";
 
 if(process.argv.length > 3){
         sendercompid = process.argv[2];
@@ -21,7 +21,7 @@ if(process.argv.length > 4){
 
 console.log("FIX client listening on port "+port+" with server "+ targetcompid+" and client id "+sendercompid);
 
-var client = new fix.FIXClient("FIX.4.2",sendercompid,targetcompid,{});
+var client = new fix.FIXClient("FIX.4.2",sendercompid,targetcompid,{user:"user", pass:"pass"});
 client.init(function(clientx){
 
     console.log("client initiated:"+_.keys(client));
