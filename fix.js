@@ -311,7 +311,7 @@ function FIXSession (fixVersion, senderCompID, targetCompID, opt){
     
     //[PUBLIC] Sends logon FIX json to counter party
     this.sendLogon = function(){
-        var msg = { 35:"A", 108:20, 98:0 };
+        var msg = { 35:"A", 108:20, 98:0, 553:"tmt", 554:"hotspot" };
         self.sendMsg(msg);
     }
 
@@ -417,7 +417,7 @@ function FIXSession (fixVersion, senderCompID, targetCompID, opt){
                 
                 
                 if(self.options.shouldRespondToLogon === true){
-                    self.sendMsg({35:"A", 108:fix[108]}); //logon response
+                    self.sendLogon(); //logon response
                 }
                 
                 //==Logon successful

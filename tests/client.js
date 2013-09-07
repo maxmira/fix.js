@@ -6,9 +6,10 @@ var fix = require('../fix.js');
 var _ = require('underscore');
 
 
-var sendercompid = "CLIENT";
-var targetcompid = "SERVER";
-var port = 9878;
+var sendercompid = "DATA_FIX_TMT";
+var targetcompid = "HSFX-FIX-BRIDGE";
+var port = 9021;
+var host = "209.191.250.26";
 
 if(process.argv.length > 3){
         sendercompid = process.argv[2];
@@ -25,7 +26,7 @@ client.init(function(clientx){
 
     console.log("client initiated:"+_.keys(client));
 
-    client.createConnection({port:port}, function(session){
+    client.createConnection({port:port, host:host}, function(session){
         session.on('logon',function(){
             util.log(">>>>>CLIENT-LOGON");
         });
